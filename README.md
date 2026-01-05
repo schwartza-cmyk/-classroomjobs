@@ -10,7 +10,9 @@ A simple web application that randomly assigns classroom jobs to students. Perfe
 - ⚠️ Alerts for unassigned students or jobs
 - 💾 Auto-save functionality using browser localStorage
 - 📱 Responsive design that works on desktop and mobile
-- 🎨 Beautiful, modern UI with gradient theme
+- 🎨 Beautiful, modern UI with blue gradient theme (#0095DA)
+- 📺 TV Display Mode with 4x4 grid layout for classroom projection
+- 🖼️ **Iframe embeddable** - can be embedded in any website
 
 ## How to Use
 
@@ -53,6 +55,35 @@ A simple web application that randomly assigns classroom jobs to students. Perfe
 6. **Start Fresh**
    - Click "🗑️ Clear All" to remove all data and start over
 
+7. **TV Display Mode**
+   - Click "📺 TV Display Mode" to show assignments in a 4x4 grid
+   - Perfect for displaying on a classroom TV or projector
+   - Press ESC or click "✕ Exit TV Mode" to return
+
+## Embedding in Your Website
+
+The Classroom Job Selector can be embedded in any website using an iframe:
+
+```html
+<iframe 
+    src="https://your-domain.com/index.html" 
+    width="100%" 
+    height="800" 
+    frameborder="0"
+    title="Classroom Job Selector"
+    allow="clipboard-write"
+></iframe>
+```
+
+**Features when embedded:**
+- ✅ Fully functional job assignment system
+- ✅ Responsive layout adapts to iframe size
+- ✅ TV Display Mode works within iframe
+- ✅ LocalStorage persists data between sessions
+- ✅ All interactive features preserved
+
+See `iframe-demo.html` for a complete embedding example with multiple size options.
+
 ## Technical Details
 
 - **Technology Stack**: Pure HTML5, CSS3, and vanilla JavaScript
@@ -67,6 +98,7 @@ A simple web application that randomly assigns classroom jobs to students. Perfe
 - `index.html` - Main application page
 - `styles.css` - Styling and responsive design
 - `script.js` - Application logic and randomization
+- `iframe-demo.html` - Example showing how to embed the app in an iframe
 
 ## Privacy
 

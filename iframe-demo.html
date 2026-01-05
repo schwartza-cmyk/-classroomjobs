@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Embed Test - Classroom Job Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .instructions {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .instructions h2 {
+            color: #0095DA;
+            margin-top: 0;
+        }
+        .instructions code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .instructions pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .iframe-wrapper {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: 2px solid #0095DA;
+            border-radius: 8px;
+        }
+        .size-options {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .size-options button {
+            background: #0095DA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .size-options button:hover {
+            background: #007BB5;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🎓 Classroom Job Selector - Iframe Embedding Demo</h1>
+        
+        <div class="instructions">
+            <h2>How to Embed</h2>
+            <p>You can now embed the Classroom Job Selector in any website using an iframe. Simply copy and paste the code below:</p>
+            
+            <pre><code>&lt;iframe 
+    src="index.html" 
+    width="100%" 
+    height="800" 
+    frameborder="0"
+    title="Classroom Job Selector"
+    allow="clipboard-write"
+&gt;&lt;/iframe&gt;</code></pre>
+            
+            <h3>Features when embedded:</h3>
+            <ul>
+                <li>✅ Fully functional job assignment system</li>
+                <li>✅ Responsive layout adapts to iframe size</li>
+                <li>✅ TV Display Mode works within iframe</li>
+                <li>✅ LocalStorage persists data between sessions</li>
+                <li>✅ All interactive features preserved</li>
+            </ul>
+        </div>
+
+        <div class="size-options">
+            <strong>Test different sizes:</strong>
+            <button onclick="setIframeSize('100%', '800px')">Large (800px)</button>
+            <button onclick="setIframeSize('100%', '600px')">Medium (600px)</button>
+            <button onclick="setIframeSize('800px', '600px')">Tablet (800x600)</button>
+            <button onclick="setIframeSize('400px', '700px')">Mobile (400x700)</button>
+        </div>
+
+        <div class="iframe-wrapper">
+            <iframe 
+                id="job-selector-iframe"
+                src="index.html" 
+                title="Classroom Job Selector"
+                allow="clipboard-write"
+            ></iframe>
+        </div>
+    </div>
+
+    <script>
+        function setIframeSize(width, height) {
+            const iframe = document.getElementById('job-selector-iframe');
+            iframe.style.width = width;
+            iframe.style.height = height;
+        }
+    </script>
+</body>
+</html>

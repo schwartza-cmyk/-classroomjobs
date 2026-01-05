@@ -63,6 +63,11 @@ const tvGrid = document.getElementById('tv-grid');
 // Store current assignments globally
 let currentAssignments = [];
 
+// Detect if running in iframe and apply appropriate class
+if (window.self !== window.top) {
+    document.body.classList.add('iframe-embedded');
+}
+
 // Event Listeners
 studentsInput.addEventListener('input', updateCounts);
 jobsInput.addEventListener('input', updateCounts);
