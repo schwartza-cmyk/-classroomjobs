@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom Job Selector</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Classroom Job Selector</h1>
+            <p>Randomly assign classroom jobs to students</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <h2>📚 Students</h2>
+                <textarea id="students-input" placeholder="Enter student names (one per line)&#10;Example:&#10;Alice&#10;Bob&#10;Charlie"></textarea>
+                <div class="input-info">
+                    <span id="student-count">0 students</span>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <h2>💼 Classroom Jobs</h2>
+                <textarea id="jobs-input" placeholder="Enter job names (one per line)&#10;Example:&#10;Line Leader&#10;Door Holder&#10;Paper Passer"></textarea>
+                <div class="input-info">
+                    <span id="job-count">0 jobs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-section">
+            <button id="assign-btn" class="primary-btn">🎲 Assign Jobs Randomly</button>
+            <button id="clear-btn" class="secondary-btn">🗑️ Clear All</button>
+        </div>
+
+        <div id="results-section" class="results-section" style="display: none;">
+            <h2>📋 Job Assignments</h2>
+            <div id="assignments-list"></div>
+            <button id="save-btn" class="secondary-btn">💾 Save Assignments</button>
+            <button id="tv-display-btn" class="secondary-btn tv-display-btn">📺 TV Display Mode</button>
+        </div>
+
+        <div id="error-message" class="error-message" style="display: none;"></div>
+    </div>
+
+    <!-- TV Display Mode -->
+    <div id="tv-display-mode" class="tv-display-mode">
+        <button id="tv-close-btn" class="tv-close-btn">✕ Exit TV Mode</button>
+        <div class="tv-header">
+            <h1>🎓 Classroom Jobs</h1>
+        </div>
+        <div id="tv-grid" class="tv-grid"></div>
+    </div>
+
+    <script type="module" src="/script.js"></script>
+</body>
+</html>
