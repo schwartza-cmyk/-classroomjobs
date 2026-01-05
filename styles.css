@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.input-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .input-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+.input-group h2 {
+    color: #444;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.input-info {
+    margin-top: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.action-section {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+.primary-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.secondary-btn {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.secondary-btn:hover {
+    background: #e0e0e0;
+}
+
+.results-section {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.results-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#assignments-list {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.assignment-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.assignment-card .student-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.assignment-card .job-name {
+    color: #667eea;
+    font-weight: 500;
+}
+
+.error-message {
+    background: #ff6b6b;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.unassigned-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff3cd;
+    border-radius: 10px;
+    border-left: 4px solid #ffc107;
+}
+
+.unassigned-section h3 {
+    color: #856404;
+    margin-bottom: 10px;
+}
+
+.unassigned-list {
+    color: #856404;
+    margin-left: 20px;
+}
+
+#save-btn {
+    display: block;
+    margin: 20px auto 0;
+}
