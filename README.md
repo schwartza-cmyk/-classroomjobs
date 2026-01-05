@@ -16,11 +16,33 @@ A simple web application that randomly assigns classroom jobs to students. Perfe
 
 ## How to Use
 
-1. **Open the Application**
-   - Simply open `index.html` in any modern web browser
-   - No installation or server required!
+### Development Mode
 
-2. **Enter Students**
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Start Dev Server**
+   ```bash
+   npm run dev
+   ```
+   - Opens on port 5173
+   - Hot reload enabled
+   - Navigate to http://localhost:5173
+
+### Production Build
+
+```bash
+npm run build
+```
+- Outputs to `dist/` directory
+- Optimized for production
+- Ready for deployment
+
+### Using the Application
+
+1. **Enter Students**
    - Type student names in the left text area
    - Enter one name per line
    - Example:
@@ -31,7 +53,7 @@ A simple web application that randomly assigns classroom jobs to students. Perfe
      Diana
      ```
 
-3. **Enter Jobs**
+2. **Enter Jobs**
    - Type job names in the right text area
    - Enter one job per line
    - Example:
@@ -42,23 +64,34 @@ A simple web application that randomly assigns classroom jobs to students. Perfe
      Board Eraser
      ```
 
-4. **Assign Jobs**
+3. **Assign Jobs**
    - Click the "🎲 Assign Jobs Randomly" button
    - The app will randomly match students to jobs
    - Each student gets one job
    - If there are more students than jobs (or vice versa), unassigned items will be shown
 
-5. **Save Your Setup**
+4. **Save Your Setup**
    - Click "💾 Save Assignments" to save your student and job lists
    - Data is stored in your browser and will be loaded automatically next time
 
-6. **Start Fresh**
+5. **Start Fresh**
    - Click "🗑️ Clear All" to remove all data and start over
 
-7. **TV Display Mode**
+6. **TV Display Mode**
    - Click "📺 TV Display Mode" to show assignments in a 4x4 grid
    - Perfect for displaying on a classroom TV or projector
    - Press ESC or click "✕ Exit TV Mode" to return
+
+## Deployment
+
+### Optidev Platform
+
+This project is configured for deployment on Optidev with:
+- ✅ Vite build system outputting to `dist/`
+- ✅ Dev server on port 5173 with `strictPort: true`
+- ✅ `server.host: true` in vite.config
+- ✅ `X-Frame-Options: ALLOWALL` header for preview
+- ✅ Static SPA (no SSR)
 
 ## Embedding in Your Website
 
