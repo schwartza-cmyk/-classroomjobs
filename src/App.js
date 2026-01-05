@@ -109,7 +109,7 @@ function App() {
               type="text"
               value={newStudent}
               onChange={(e) => setNewStudent(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && addStudent()}
+              onKeyDown={(e) => e.key === 'Enter' && addStudent()}
               placeholder="Add new student"
             />
             <button onClick={addStudent}>Add Student</button>
@@ -131,7 +131,7 @@ function App() {
               type="text"
               value={newJob}
               onChange={(e) => setNewJob(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && addJob()}
+              onKeyDown={(e) => e.key === 'Enter' && addJob()}
               placeholder="Add new job"
             />
             <button onClick={addJob}>Add Job</button>
