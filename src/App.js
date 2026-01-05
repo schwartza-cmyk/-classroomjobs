@@ -40,6 +40,8 @@ function App() {
   const removeStudent = (index) => {
     const updatedStudents = students.filter((_, i) => i !== index);
     setStudents(updatedStudents);
+    // Clear assignments to avoid stale data
+    setAssignments([]);
   };
 
   // Add a new job
@@ -54,6 +56,8 @@ function App() {
   const removeJob = (index) => {
     const updatedJobs = jobs.filter((_, i) => i !== index);
     setJobs(updatedJobs);
+    // Clear assignments to avoid stale data
+    setAssignments([]);
   };
 
   // Assign jobs to students
@@ -77,7 +81,16 @@ function App() {
       const rotatedStudents = [...students.slice(1), students[0]];
       setStudents(rotatedStudents);
       if (autoRotate && assignments.length > 0) {
-        assignJobs();
+        // Create assignments with rotated students immediately
+        const newAssignments = [];
+        const minLength = Math.min(rotatedStudents.length, jobs.length);
+        for (let i = 0; i < minLength; i++) {
+          newAssignments.push({
+            student: rotatedStudents[i],
+            job: jobs[i]
+          });
+        }
+        setAssignments(newAssignments);
       }
     }
   };
