@@ -26,6 +26,21 @@ const defaultStudents = [
     'Reese Staebell'
 ];
 
+// Default jobs list
+const defaultJobs = [
+    'Garbage 1',
+    'Garbage 2',
+    'Vacuum 1',
+    'Vacuum 2',
+    'Vacuum 3',
+    'Vacuum 4',
+    'Sweep Entryways',
+    'Wipe Tables 1',
+    'Wipe Tables 2',
+    'Check Bathrooms',
+    'Check Lunchroom'
+];
+
 // DOM Elements
 const studentsInput = document.getElementById('students-input');
 const jobsInput = document.getElementById('jobs-input');
@@ -37,6 +52,13 @@ const jobCount = document.getElementById('job-count');
 const resultsSection = document.getElementById('results-section');
 const assignmentsList = document.getElementById('assignments-list');
 const errorMessage = document.getElementById('error-message');
+const tvDisplayBtn = document.getElementById('tv-display-btn');
+const tvDisplayMode = document.getElementById('tv-display-mode');
+const tvCloseBtn = document.getElementById('tv-close-btn');
+const tvGrid = document.getElementById('tv-grid');
+
+// Store current assignments globally
+let currentAssignments = [];
 
 // Event Listeners
 studentsInput.addEventListener('input', updateCounts);
@@ -44,6 +66,8 @@ jobsInput.addEventListener('input', updateCounts);
 assignBtn.addEventListener('click', assignJobs);
 clearBtn.addEventListener('click', clearAll);
 saveBtn.addEventListener('click', saveAssignments);
+tvDisplayBtn.addEventListener('click', showTVDisplay);
+tvCloseBtn.addEventListener('click', closeTVDisplay);
 
 // Load saved data on page load
 window.addEventListener('load', loadSavedData);
@@ -96,6 +120,8 @@ function assignJobs() {
     
     // Shuffle students for random assignment
     const shuffledStudents = shuffleArray(students);
+    // Shuffle jobs for random assignment
+    const shuffledJobs = shuffleArray(jobs);
     
     // Create assignments
     const assignments = [];
@@ -108,7 +134,7 @@ function assignJobs() {
     for (let i = 0; i < minLength; i++) {
         assignments.push({
             student: shuffledStudents[i],
-            job: jobs[i]
+            job: shuffledJobs[i]
         });
     }
     
@@ -130,6 +156,9 @@ function assignJobs() {
 // Display assignments in the UI
 function displayAssignments(assignments, unassignedStudents, unassignedJobs) {
     assignmentsList.innerHTML = '';
+    
+    // Store assignments globally for TV display
+    currentAssignments = assignments;
     
     // Show assigned jobs
     assignments.forEach(assignment => {
@@ -225,13 +254,15 @@ function loadSavedData() {
             updateCounts();
         } catch (e) {
             console.error('Error loading saved data:', e);
-            // Load default students on error
+            // Load defaults on error
             studentsInput.value = defaultStudents.join('\n');
+            jobsInput.value = defaultJobs.join('\n');
             updateCounts();
         }
     } else {
-        // Load default students if no saved data
+        // Load defaults if no saved data
         studentsInput.value = defaultStudents.join('\n');
+        jobsInput.value = defaultJobs.join('\n');
         updateCounts();
     }
 }
@@ -242,3 +273,51 @@ function escapeHtml(text) {
     div.textContent = text;
     return div.innerHTML;
 }
+
+// Show TV Display Mode
+function showTVDisplay() {
+    if (currentAssignments.length === 0) {
+        showError('Please assign jobs first before entering TV display mode.');
+        return;
+    }
+    
+    // Clear the TV grid
+    tvGrid.innerHTML = '';
+    
+    // Create 16 cells for 4x4 grid
+    for (let i = 0; i < 16; i++) {
+        const cell = document.createElement('div');
+        
+        if (i < currentAssignments.length) {
+            // Fill with assignment
+            const assignment = currentAssignments[i];
+            cell.className = 'tv-job-card';
+            cell.innerHTML = `
+                <div class="job-title">${escapeHtml(assignment.job)}</div>
+                <div class="student-name">${escapeHtml(assignment.student)}</div>
+            `;
+        } else {
+            // Empty cell
+            cell.className = 'tv-job-card empty';
+        }
+        
+        tvGrid.appendChild(cell);
+    }
+    
+    // Show TV display
+    tvDisplayMode.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close TV Display Mode
+function closeTVDisplay() {
+    tvDisplayMode.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close TV display with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && tvDisplayMode.classList.contains('active')) {
+        closeTVDisplay();
+    }
+});
