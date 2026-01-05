@@ -41,6 +41,9 @@ const defaultJobs = [
     'Check Lunchroom'
 ];
 
+// TV Display Grid Configuration
+const TV_GRID_SIZE = 16; // 4x4 grid
+
 // DOM Elements
 const studentsInput = document.getElementById('students-input');
 const jobsInput = document.getElementById('jobs-input');
@@ -145,7 +148,7 @@ function assignJobs() {
         }
     } else if (jobs.length > students.length) {
         for (let i = students.length; i < jobs.length; i++) {
-            unassignedJobs.push(jobs[i]);
+            unassignedJobs.push(shuffledJobs[i]);
         }
     }
     
@@ -284,8 +287,8 @@ function showTVDisplay() {
     // Clear the TV grid
     tvGrid.innerHTML = '';
     
-    // Create 16 cells for 4x4 grid
-    for (let i = 0; i < 16; i++) {
+    // Create cells for 4x4 grid
+    for (let i = 0; i < TV_GRID_SIZE; i++) {
         const cell = document.createElement('div');
         
         if (i < currentAssignments.length) {
